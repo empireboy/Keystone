@@ -1,22 +1,15 @@
 using CM.Events;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-	public GameStates GameState { get; private set; }
-
-	public float gameStateTransitionTime = 1f;
-
-	[SerializeField]
-	private MovingEntity _player;
-
 	[SerializeField]
 	private EnemyManager _enemyManager;
 
 	private Graph<Keystone> _keystoneGraph;
+	private List<IKeystoneEntity> _entities = new List<IKeystoneEntity>();
 
 	public enum Direction
 	{
@@ -26,23 +19,38 @@ public class GameManager : MonoBehaviour
 		Down
 	}
 
-	public enum GameStates
+	public void AddEntity(IKeystoneEntity entity)
 	{
-		PlayerTurn,
-		EnemiesTurn
+		_entities.Add(entity);
 	}
 
-	public void NextGameState()
+	public void AddEntities(IKeystoneEntity[] entities)
 	{
-		StartCoroutine(NextGameStateRoutine());
+		_entities.AddRange(entities);
 	}
 
-	public MovingEntity GetPlayer(KeyCode key)
+	public IKeystoneEntity GetEntity(KeyCode key)
 	{
-		if (_player.Key == key)
-			return _player;
+		foreach (IKeystoneEntity entity in _entities)
+		{
+			if (entity.Key == key)
+				return entity;
+		}
 
 		return null;
+	}
+
+	public IKeystoneEntity[] GetEntities(KeyCode key)
+	{
+		List<IKeystoneEntity> entities = new List<IKeystoneEntity>();
+
+		foreach (IKeystoneEntity entity in _entities)
+		{
+			if (entity.Key == key)
+				entities.Add(entity);
+		}
+
+		return entities.ToArray();
 	}
 
 	public Keystone GetNeighbourKeystone(KeyCode key, Direction direction)
@@ -114,21 +122,6 @@ public class GameManager : MonoBehaviour
 
 			EventManager.Trigger(keystoneReleasedEvent);
 		}
-	}
-
-	private IEnumerator NextGameStateRoutine()
-	{
-		GameState++;
-
-		// Start from the first game state when the final game state ends
-		if ((int)GameState >= Enum.GetNames(typeof(GameStates)).Length)
-			GameState = 0;
-
-		if (GameState == GameStates.EnemiesTurn)
-			yield return new WaitForSeconds(gameStateTransitionTime);
-
-		if (GameState == GameStates.EnemiesTurn)
-			_enemyManager.ExecuteEnemies();
 	}
 
 	private void UpdateInput()

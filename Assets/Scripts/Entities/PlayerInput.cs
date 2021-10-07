@@ -9,10 +9,12 @@ public class PlayerInput : MonoBehaviour
 	private MovingEntity _player;
 
 	private GameManager _gameManager;
+	private TurnManager _turnManager;
 
 	private void Awake()
 	{
 		_gameManager = FindObjectOfType<GameManager>();
+		_turnManager = FindObjectOfType<TurnManager>();
 	}
 
 	private void Start()
@@ -22,7 +24,7 @@ public class PlayerInput : MonoBehaviour
 
 	private void OnKeystonePressed(object eventData)
 	{
-		if (_gameManager.GameState != GameManager.GameStates.PlayerTurn)
+		if (_turnManager.CurrentTurn != TurnManager.TurnStates.PlayerTurn)
 			return;
 
 		KeystonePressedEvent keystonePressedEvent = eventData as KeystonePressedEvent;
@@ -48,7 +50,7 @@ public class PlayerInput : MonoBehaviour
 					_player.MoveToKeystone(_gameManager.GetKeystone(keystonePressedEvent.Key));
 				}
 
-				_gameManager.NextGameState();
+				_turnManager.NextTurn();
 			}
 		}
 	}

@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class EnemyWalkCommand : EnemyCommand
 {
 	public GameManager.Direction direction;
@@ -13,11 +15,11 @@ public class EnemyWalkCommand : EnemyCommand
 		if (gameManager.GetEnemy(keystone.Key) != null)
 			return false;
 
-		MovingEntity player = gameManager.GetPlayer(keystone.Key);
+		IKeystoneEntity player = gameManager.GetEntity(keystone.Key);
 
-		if (player)
+		if (player != null)
 		{
-			player.GetComponent<IDamageable>().TakeDamage(damage);
+			(player as Component).GetComponent<IDamageable>().TakeDamage(damage);
 
 			return false;
 		}

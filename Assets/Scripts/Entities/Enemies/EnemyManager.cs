@@ -1,18 +1,24 @@
+using CM.Events;
 using System.Collections;
 using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
+	public float enemyTurnDelay;
 	public MovingEntity[] enemies;
 
 	[SerializeField]
 	private PrefabCreator _prefabCreator;
 
 	private GameManager _gameManager;
+	private TurnManager _turnManager;
 
 	private void Awake()
 	{
 		_gameManager = FindObjectOfType<GameManager>();
+		_turnManager = FindObjectOfType<TurnManager>();
+
+		EventManager.AddListener<TurnStartEvent>(OnTurnStart);
 	}
 
 	public void ExecuteEnemies()
@@ -33,6 +39,8 @@ public class EnemyManager : MonoBehaviour
 
 	private IEnumerator ExecuteEnemiesRoutine()
 	{
+		yield return new WaitForSeconds(enemyTurnDelay);
+
 		foreach (MovingEntity enemy in enemies)
 		{
 			if (!enemy)
@@ -43,6 +51,17 @@ public class EnemyManager : MonoBehaviour
 			enemy.GetComponent<EnemyBehaviour>().Execute();
 		}
 
-		_gameManager.NextGameState();
+		_turnManager.NextTurn();
+	}
+
+	private void OnTurnStart(object eventData)
+	{
+		TurnStartEvent turnStartEvent = (TurnStartEvent)eventData;
+
+		// Return if it's not the enemies turn
+		if (turnStartEvent.Turn != TurnManager.TurnStates.EnemiesTurn)
+			return;
+
+		ExecuteEnemies();
 	}
 }

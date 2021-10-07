@@ -18,11 +18,13 @@ public class EnemyAttackCommand : EnemyCommand
 		if (gameManager.GetEnemy(keystone.Key) != null)
 			return true;
 
-		MovingEntity player = gameManager.GetPlayer(keystone.Key);
+		IKeystoneEntity player = gameManager.GetEntity(keystone.Key);
 
-		if (player)
+		if (player != null)
 		{
-			player.GetComponent<IDamageable>().TakeDamage(damage);
+			(player as Component).GetComponent<IDamageable>().TakeDamage(damage);
+
+			return false;
 		}
 		else
 		{
