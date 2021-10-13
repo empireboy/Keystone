@@ -36,8 +36,19 @@ public class KeystoneTextShowHide : MonoBehaviour
 
 				if (_gameManager.GetEntity("Player").GetComponent<IKeystoneEntity>().Key == neighbourKeystone.Key)
 				{
-					keystoneObject.GetComponent<KeystoneText>().ShowKey();
-					keystoneObject.GetComponent<MeshRenderer>().material.color = new Color(0.5f, 1, 1);
+					if (_gameManager.GetEntity(keystoneObject.key, "Enemy") != null)
+					{
+						// Color the keystone for when you can attack an enemy
+						keystoneObject.GetComponent<MeshRenderer>().material.color = new Color(1, 0, 0);
+					}
+					else
+					{
+						// Color the keystone for when you can move to this keystone
+						keystoneObject.GetComponent<MeshRenderer>().material.color = new Color(0.5f, 1, 1);
+
+						// Show the key that you can move towards
+						keystoneObject.GetComponent<KeystoneText>().ShowKey();
+					}
 				}
 			}
 		}
