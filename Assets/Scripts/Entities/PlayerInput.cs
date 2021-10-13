@@ -39,9 +39,9 @@ public class PlayerInput : MonoBehaviour
 
 			if (_player.Key == neighbourKeystone.Key)
 			{
-				MovingEntity enemy = _gameManager.GetEnemy(keystonePressedEvent.Key);
+				GameObject enemy = _gameManager.GetEntity(keystonePressedEvent.Key, "Enemy");
 
-				if (enemy)
+				if (enemy != null)
 				{
 					enemy.GetComponent<IDamageable>().TakeDamage(damage);
 				}

@@ -12,14 +12,14 @@ public class EnemyWalkCommand : EnemyCommand
 		if (keystone == null)
 			return false;
 
-		if (gameManager.GetEnemy(keystone.Key) != null)
+		if (gameManager.GetEntity(keystone.Key, EnemyTag) != null)
 			return false;
 
-		IKeystoneEntity player = gameManager.GetEntity(keystone.Key);
+		GameObject player = gameManager.GetEntity(keystone.Key);
 
 		if (player != null)
 		{
-			(player as Component).GetComponent<IDamageable>().TakeDamage(damage);
+			player.GetComponent<IDamageable>().TakeDamage(damage);
 
 			return false;
 		}

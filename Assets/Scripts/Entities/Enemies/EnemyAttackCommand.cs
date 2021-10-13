@@ -4,6 +4,7 @@ public class EnemyAttackCommand : EnemyCommand
 {
 	public GameManager.Direction direction;
 	public int damage = 40;
+	public bool cycleNextIfAttacked = false;
 
 	[SerializeField]
 	private PrefabCreator _prefabCreator;
@@ -15,16 +16,16 @@ public class EnemyAttackCommand : EnemyCommand
 		if (keystone == null)
 			return true;
 
-		if (gameManager.GetEnemy(keystone.Key) != null)
+		if (gameManager.GetEntity(keystone.Key, EnemyTag) != null)
 			return true;
 
-		IKeystoneEntity player = gameManager.GetEntity(keystone.Key);
+		GameObject player = gameManager.GetEntity(keystone.Key, "Player");
 
-		if (player != null)
+		if (player)
 		{
-			(player as Component).GetComponent<IDamageable>().TakeDamage(damage);
+			player.GetComponent<IDamageable>().TakeDamage(damage);
 
-			return false;
+			return cycleNextIfAttacked;
 		}
 		else
 		{

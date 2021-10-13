@@ -44,6 +44,11 @@ public class TurnManager : MonoBehaviour
 		StartTurn();
 	}
 
+	private void Start()
+	{
+		StartTurn();
+	}
+
 	private void StartTurn()
 	{
 		EventManager.Trigger(new TurnStartEvent(CurrentTurn));
@@ -53,19 +58,4 @@ public class TurnManager : MonoBehaviour
 	{
 		EventManager.Trigger(new TurnEndEvent(CurrentTurn));
 	}
-
-	/*private IEnumerator NextTurnRoutine()
-	{
-		CurrentTurn++;
-
-		// Start from the first game state when the final game state ends
-		if ((int)CurrentTurn >= Enum.GetNames(typeof(TurnStates)).Length)
-			CurrentTurn = 0;
-
-		if (CurrentTurn == TurnStates.EnemiesTurn)
-			yield return new WaitForSeconds(gameStateTransitionTime);
-
-		if (CurrentTurn == TurnStates.EnemiesTurn)
-			_enemyManager.ExecuteEnemies();
-	}*/
 }

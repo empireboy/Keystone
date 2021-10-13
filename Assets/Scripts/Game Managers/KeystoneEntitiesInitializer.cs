@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(GameManager))]
 public class KeystoneEntitiesInitializer : MonoBehaviour
 {
-	[SerializeField]
+	/*[SerializeField]
 	private GameObject[] _entities;
 
 	private void Awake()
@@ -14,5 +14,5 @@ public class KeystoneEntitiesInitializer : MonoBehaviour
 		GetComponent<GameManager>().AddEntities(entities);
 
 		Destroy(this);
-	}
+	}*/
 }

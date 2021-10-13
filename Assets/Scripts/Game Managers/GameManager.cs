@@ -8,8 +8,10 @@ public class GameManager : MonoBehaviour
 	[SerializeField]
 	private EnemyManager _enemyManager;
 
+	[SerializeField]
+	private List<GameObject> _entities = new List<GameObject>();
+
 	private Graph<Keystone> _keystoneGraph;
-	private List<IKeystoneEntity> _entities = new List<IKeystoneEntity>();
 
 	public enum Direction
 	{
@@ -19,34 +21,70 @@ public class GameManager : MonoBehaviour
 		Down
 	}
 
-	public void AddEntity(IKeystoneEntity entity)
+	public void AddEntity(GameObject entity)
 	{
+		if (entity == null)
+			throw new NullReferenceException("Can't add entity. Entity is null");
+
 		_entities.Add(entity);
 	}
 
-	public void AddEntities(IKeystoneEntity[] entities)
+	public void AddEntities(GameObject[] entities)
 	{
+		if (entities.Length <= 0)
+			throw new NullReferenceException("Can't add entities. Entities array is empty");
+
 		_entities.AddRange(entities);
 	}
 
-	public IKeystoneEntity GetEntity(KeyCode key)
+	public GameObject GetEntity(string tag)
 	{
-		foreach (IKeystoneEntity entity in _entities)
+		RemoveEntitiesIfNull();
+
+		foreach (GameObject entity in _entities)
 		{
-			if (entity.Key == key)
+			if (entity.tag == tag)
 				return entity;
 		}
 
 		return null;
 	}
 
-	public IKeystoneEntity[] GetEntities(KeyCode key)
+	public GameObject GetEntity(KeyCode key)
 	{
-		List<IKeystoneEntity> entities = new List<IKeystoneEntity>();
+		RemoveEntitiesIfNull();
 
-		foreach (IKeystoneEntity entity in _entities)
+		foreach (GameObject entity in _entities)
 		{
-			if (entity.Key == key)
+			if (entity.GetComponent<IKeystoneEntity>().Key == key)
+				return entity;
+		}
+
+		return null;
+	}
+
+	public GameObject GetEntity(KeyCode key, string tag)
+	{
+		RemoveEntitiesIfNull();
+
+		foreach (GameObject entity in _entities)
+		{
+			if (entity.GetComponent<IKeystoneEntity>().Key == key && entity.tag == tag)
+				return entity;
+		}
+
+		return null;
+	}
+
+	public GameObject[] GetEntities(KeyCode key)
+	{
+		RemoveEntitiesIfNull();
+
+		List<GameObject> entities = new List<GameObject>();
+
+		foreach (GameObject entity in _entities)
+		{
+			if (entity.GetComponent<IKeystoneEntity>().Key == key)
 				entities.Add(entity);
 		}
 
@@ -94,11 +132,6 @@ public class GameManager : MonoBehaviour
 		return null;
 	}
 
-	public MovingEntity GetEnemy(KeyCode key)
-	{
-		return _enemyManager.GetEnemy(key);
-	}
-
 	private void Awake()
 	{
 		_keystoneGraph = new Graph<Keystone>();
@@ -141,6 +174,11 @@ public class GameManager : MonoBehaviour
 				EventManager.Trigger(keystonePressedEvent);
 			}
 		}
+	}
+
+	private void RemoveEntitiesIfNull()
+	{
+		_entities.RemoveAll(item => item == null);
 	}
 
 	private Graph<Keystone> GetKeyboardLayout()

@@ -8,6 +8,17 @@ public class KeystoneManager : MonoBehaviour
 
 	private GameManager _gameManager;
 
+	public KeystoneObject GetKeystoneObject(KeyCode key)
+	{
+		foreach (KeystoneObject keystoneObject in keystoneObjects)
+		{
+			if (keystoneObject.key == key)
+				return keystoneObject;
+		}
+
+		return null;
+	}
+
 	private void Awake()
 	{
 		_gameManager = FindObjectOfType<GameManager>();
@@ -17,24 +28,6 @@ public class KeystoneManager : MonoBehaviour
 	{
 		EventManager.AddListener<KeystonePressedEvent>(OnKeystonePressed);
 		EventManager.AddListener<KeystoneReleasedEvent>(OnKeystoneReleased);
-
-		/*int neighbourCount = 4;
-
-		foreach (KeystoneObject keystoneObject in keystoneObjects)
-		{
-			for (int i = 0; i < neighbourCount; i++)
-			{
-				Keystone neighbourKeystone = _gameManager.GetNeighbourKeystone(keystoneObject.key, (GameManager.Direction)i);
-
-				if (neighbourKeystone == null)
-					continue;
-
-				if (_gameManager.player.Key == neighbourKeystone.Key)
-				{
-					neighbourKeystone
-				}
-			}
-		}*/
 
 		//StartCoroutine(WaveStartRoutine(KeyCode.A));
 	}
