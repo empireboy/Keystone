@@ -1,8 +1,17 @@
 using CM.Events;
 using UnityEngine;
 
-public class KeystoneTextShowHide : MonoBehaviour
+public class KeystoneColor : MonoBehaviour
 {
+	[SerializeField]
+	private Color _defaultColor;
+
+	[SerializeField]
+	private Color _selectedColor;
+
+	[SerializeField]
+	private Color _targetingColor;
+
 	private GameManager _gameManager;
 	private KeystoneManager _keystoneManager;
 
@@ -36,10 +45,15 @@ public class KeystoneTextShowHide : MonoBehaviour
 
 				if (_gameManager.GetEntity("Player").GetComponent<IKeystoneEntity>().Key == neighbourKeystone.Key)
 				{
-					if (_gameManager.GetEntity(keystoneObject.key, "Enemy") == null)
+					if (_gameManager.GetEntity(keystoneObject.key, "Enemy") != null)
 					{
-						// Show the key that you can move towards
-						keystoneObject.GetComponent<KeystoneText>().ShowKey();
+						// Color the keystone for when you can attack an enemy
+						keystoneObject.GetComponent<MeshRenderer>().material.color = _targetingColor;
+					}
+					else
+					{
+						// Color the keystone for when you can move to this keystone
+						keystoneObject.GetComponent<MeshRenderer>().material.color = _selectedColor;
 					}
 				}
 			}
@@ -56,7 +70,7 @@ public class KeystoneTextShowHide : MonoBehaviour
 
 		foreach (KeystoneObject keystoneObject in _keystoneManager.keystoneObjects)
 		{
-			keystoneObject.GetComponent<KeystoneText>().HideKey();
+			keystoneObject.GetComponent<MeshRenderer>().material.color = _defaultColor;
 		}
 	}
 }
