@@ -118,6 +118,30 @@ public class GameManager : MonoBehaviour
 		return keystone;
 	}
 
+	public Keystone[] GetAllNeighbourKeystones(KeyCode key)
+	{
+		List<Keystone> keystones = new List<Keystone>();
+		Node<Keystone> node = GetNode(key);
+
+		if (node == null)
+			return null;
+
+		int neighbourCount = 4;
+
+		for (int i = 0; i < neighbourCount; i++)
+		{
+			if (node.NextNodes[i] == null)
+			{
+				keystones.Add(null);
+				continue;
+			}
+
+			keystones.Add(node.NextNodes[i].Data);
+		}
+
+		return keystones.ToArray();
+	}
+
 	public Keystone GetKeystone(KeyCode key)
 	{
 		foreach (Node<Keystone> node in _keystoneGraph.Nodes)

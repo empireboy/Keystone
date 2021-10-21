@@ -28,12 +28,11 @@ public class PlayerInput : MonoBehaviour
 			return;
 
 		KeystonePressedEvent keystonePressedEvent = eventData as KeystonePressedEvent;
-		int neighbourCount = 4;
+		Keystone[] neighbourKeystones = _gameManager.GetAllNeighbourKeystones(keystonePressedEvent.Key);
 
-		for (int i = 0; i < neighbourCount; i++)
+		// Loop through all neighbours
+		foreach (Keystone neighbourKeystone in neighbourKeystones)
 		{
-			Keystone neighbourKeystone = _gameManager.GetNeighbourKeystone(keystonePressedEvent.Key, (GameManager.Direction)i);
-
 			if (neighbourKeystone == null)
 				continue;
 
