@@ -6,9 +6,6 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
 	[SerializeField]
-	private EnemyManager _enemyManager;
-
-	[SerializeField]
 	private List<GameObject> _entities = new List<GameObject>();
 
 	private Graph<Keystone> _keystoneGraph;
@@ -74,6 +71,21 @@ public class GameManager : MonoBehaviour
 		}
 
 		return null;
+	}
+
+	public GameObject[] GetEntities(string tag)
+	{
+		RemoveEntitiesIfNull();
+
+		List<GameObject> entities = new List<GameObject>();
+
+		foreach (GameObject entity in _entities)
+		{
+			if (entity.tag == tag)
+				entities.Add(entity);
+		}
+
+		return entities.ToArray();
 	}
 
 	public GameObject[] GetEntities(KeyCode key)

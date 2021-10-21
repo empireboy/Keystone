@@ -5,13 +5,11 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
 	public float enemyTurnDelay;
-	public MovingEntity[] enemies;
-
-	[SerializeField]
-	private PrefabCreator _prefabCreator;
+	public float delayBetweenEnemies = 0.3f;
 
 	private GameManager _gameManager;
 	private TurnManager _turnManager;
+	private GameObject[] _enemies => _gameManager.GetEntities("Enemy");
 
 	private void Awake()
 	{
@@ -26,11 +24,11 @@ public class EnemyManager : MonoBehaviour
 		StartCoroutine(ExecuteEnemiesRoutine());
 	}
 
-	public MovingEntity GetEnemy(KeyCode key)
+	public GameObject GetEnemy(KeyCode key)
 	{
-		foreach (MovingEntity enemy in enemies)
+		foreach (GameObject enemy in _enemies)
 		{
-			if (enemy.Key == key)
+			if (enemy.GetComponent<IKeystoneEntity>().Key == key)
 				return enemy;
 		}
 
@@ -41,14 +39,14 @@ public class EnemyManager : MonoBehaviour
 	{
 		yield return new WaitForSeconds(enemyTurnDelay);
 
-		foreach (MovingEntity enemy in enemies)
+		foreach (GameObject enemy in _enemies)
 		{
 			if (!enemy)
 				continue;
 
-			yield return new WaitForSeconds(0.3f);
-
 			enemy.GetComponent<EnemyBehaviour>().Execute();
+
+			yield return new WaitForSeconds(delayBetweenEnemies);
 		}
 
 		_turnManager.NextTurn();
