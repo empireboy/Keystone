@@ -142,6 +142,55 @@ public class GameManager : MonoBehaviour
 		return keystones.ToArray();
 	}
 
+	public Keystone[] GetKeystonesByPosition(KeystonePositionsSO keystonePositionsSO, KeyCode key)
+	{
+		List<Keystone> keystones = new List<Keystone>();
+		Node<Keystone> node = GetNode(key);
+
+		if (node == null)
+			return null;
+
+		for (int i = 0; i < keystonePositionsSO.positions.Length; i++)
+		{
+			Node<Keystone> targetNode = node;
+
+			int positionX = (int)keystonePositionsSO.positions[i].x;
+			int positionY = (int)keystonePositionsSO.positions[i].y;
+
+			// Check for left or right node
+			Direction direction = (positionX < 0) ? Direction.Left : Direction.Right;
+
+			for (int indexX = 0; indexX < Mathf.Abs(positionX); indexX++)
+			{
+				targetNode = GetNeighbourNode(targetNode, direction);
+
+				if (targetNode == null)
+					break;
+			}
+
+			if (targetNode == null)
+				continue;
+
+			// Check for up or down node
+			direction = (positionY < 0) ? Direction.Up : Direction.Down;
+
+			for (int indexY = 0; indexY < Mathf.Abs(positionY); indexY++)
+			{
+				targetNode = GetNeighbourNode(targetNode, direction);
+
+				if (targetNode == null)
+					break;
+			}
+
+			if (targetNode == null)
+				continue;
+
+			keystones.Add(targetNode.Data);
+		}
+
+		return keystones.ToArray();
+	}
+
 	public Keystone GetKeystone(KeyCode key)
 	{
 		foreach (Node<Keystone> node in _keystoneGraph.Nodes)
@@ -166,6 +215,16 @@ public class GameManager : MonoBehaviour
 		}
 
 		return null;
+	}
+
+	public Node<Keystone> GetNeighbourNode(KeyCode key, Direction direction)
+	{
+		return GetNode(key).NextNodes[(int)direction];
+	}
+
+	public Node<Keystone> GetNeighbourNode(Node<Keystone> node, Direction direction)
+	{
+		return node.NextNodes[(int)direction];
 	}
 
 	private void Awake()

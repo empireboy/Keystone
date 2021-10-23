@@ -23,10 +23,14 @@ public class KeystoneTextShowHide : MonoBehaviour
 		if (turnStartEvent.Turn != TurnManager.TurnStates.PlayerTurn)
 			return;
 
+		GameObject player = _gameManager.GetEntity("Player");
+		KeyCode playerKey = player.GetComponent<IKeystoneEntity>().Key;
+		KeystonePositionsSO playerMovablePositions = player.GetComponent<PlayerInput>().movablePositions;
+
 		// Loop through all keystoneObjects, and check for neighbours
 		foreach (KeystoneObject keystoneObject in _keystoneManager.keystoneObjects)
 		{
-			Keystone[] neighbourKeystones = _gameManager.GetAllNeighbourKeystones(keystoneObject.key);
+			Keystone[] neighbourKeystones = _gameManager.GetKeystonesByPosition(playerMovablePositions, playerKey);
 
 			// Loop through all neighbours from each specific keystoneObject
 			foreach (Keystone neighbourKeystone in neighbourKeystones)
@@ -34,7 +38,7 @@ public class KeystoneTextShowHide : MonoBehaviour
 				if (neighbourKeystone == null)
 					continue;
 
-				if (_gameManager.GetEntity("Player").GetComponent<IKeystoneEntity>().Key == neighbourKeystone.Key)
+				if (keystoneObject.key == neighbourKeystone.Key)
 				{
 					if (_gameManager.GetEntity(keystoneObject.key, "Enemy") == null)
 					{

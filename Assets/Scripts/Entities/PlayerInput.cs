@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
+	public KeystonePositionsSO movablePositions;
 	public int damage;
 
 	[SerializeField]
@@ -28,7 +29,7 @@ public class PlayerInput : MonoBehaviour
 			return;
 
 		KeystonePressedEvent keystonePressedEvent = eventData as KeystonePressedEvent;
-		Keystone[] neighbourKeystones = _gameManager.GetAllNeighbourKeystones(keystonePressedEvent.Key);
+		Keystone[] neighbourKeystones = _gameManager.GetKeystonesByPosition(movablePositions, _player.Key);
 
 		// Loop through all neighbours
 		foreach (Keystone neighbourKeystone in neighbourKeystones)
@@ -36,7 +37,7 @@ public class PlayerInput : MonoBehaviour
 			if (neighbourKeystone == null)
 				continue;
 
-			if (_player.Key == neighbourKeystone.Key)
+			if (keystonePressedEvent.Key == neighbourKeystone.Key)
 			{
 				GameObject enemy = _gameManager.GetEntity(keystonePressedEvent.Key, "Enemy");
 

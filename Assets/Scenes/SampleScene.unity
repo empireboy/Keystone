@@ -664,6 +664,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80d6527e07a4a2f4baba03cff1c55103, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movablePositions: {fileID: 11400000, guid: 05ff09da005f9d54e881b6320d254dd3, type: 2}
   damage: 1
   _player: {fileID: 319806783}
 --- !u!114 &319806785
