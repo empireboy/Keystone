@@ -5,9 +5,13 @@ public class PlayerInput : MonoBehaviour
 {
 	public KeystonePositionsSO movablePositions;
 	public int damage;
+	public float destroyItemDelay;
 
 	[SerializeField]
 	private MovingEntity _player;
+
+	[SerializeField]
+	private KeystoneInventory _inventory;
 
 	private GameManager _gameManager;
 	private TurnManager _turnManager;
@@ -21,6 +25,32 @@ public class PlayerInput : MonoBehaviour
 	private void Start()
 	{
 		EventManager.AddListener<KeystonePressedEvent>(OnKeystonePressed);
+	}
+
+	private void KeystonePressedBehaviour(GameObject entity, KeystonePressedEvent keystonePressedEvent)
+	{
+		// Move to keystone if there is no entity on it
+		if (!entity)
+		{
+			_player.MoveToKeystone(_gameManager.GetKeystone(keystonePressedEvent.Key));
+			return;
+		}
+
+		switch (entity.tag)
+		{
+			case "Enemy":
+
+				entity.GetComponent<IDamageable>().TakeDamage(damage);
+
+				break;
+
+			case "Item":
+
+				_player.MoveToKeystone(_gameManager.GetKeystone(keystonePressedEvent.Key));
+				entity.GetComponent<ItemEntity>().Collect(_inventory);
+
+				break;
+		}
 	}
 
 	private void OnKeystonePressed(object eventData)
@@ -37,21 +67,14 @@ public class PlayerInput : MonoBehaviour
 			if (neighbourKeystone == null)
 				continue;
 
-			if (keystonePressedEvent.Key == neighbourKeystone.Key)
-			{
-				GameObject enemy = _gameManager.GetEntity(keystonePressedEvent.Key, "Enemy");
+			if (keystonePressedEvent.Key != neighbourKeystone.Key)
+				continue;
 
-				if (enemy != null)
-				{
-					enemy.GetComponent<IDamageable>().TakeDamage(damage);
-				}
-				else
-				{
-					_player.MoveToKeystone(_gameManager.GetKeystone(keystonePressedEvent.Key));
-				}
+			GameObject entity = _gameManager.GetEntity(keystonePressedEvent.Key);
 
-				_turnManager.NextTurn();
-			}
+			KeystonePressedBehaviour(entity, keystonePressedEvent);
+
+			_turnManager.NextTurn();
 		}
 	}
 }
