@@ -999,11 +999,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7591739827719949035, guid: 237a6d33d5453e74db32f88238f3f4dd, type: 3}
       propertyPath: _health
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7591739827719949035, guid: 237a6d33d5453e74db32f88238f3f4dd, type: 3}
       propertyPath: _maxHealth
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7591739827719949036, guid: 237a6d33d5453e74db32f88238f3f4dd, type: 3}
       propertyPath: enemyCommands.Array.size
