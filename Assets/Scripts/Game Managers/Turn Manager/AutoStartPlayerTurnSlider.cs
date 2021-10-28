@@ -2,7 +2,6 @@ using CM.Events;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Slider))]
 public class AutoStartPlayerTurnSlider : MonoBehaviour
 {
 	[SerializeField]
