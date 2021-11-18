@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+	public event GameObjectEvent OnEntityRemoved;
+
 	[SerializeField]
 	private List<GameObject> _entities = new List<GameObject>();
 
@@ -34,10 +36,17 @@ public class GameManager : MonoBehaviour
 		_entities.AddRange(entities);
 	}
 
+	public void RemoveEntity(GameObject entity)
+	{
+		_entities.Remove(entity);
+
+		OnEntityRemoved?.Invoke(entity);
+
+		Destroy(entity);
+	}
+
 	public GameObject GetEntity(string tag)
 	{
-		RemoveEntitiesIfNull();
-
 		foreach (GameObject entity in _entities)
 		{
 			if (entity.tag == tag)
@@ -49,8 +58,6 @@ public class GameManager : MonoBehaviour
 
 	public GameObject GetEntity(KeyCode key)
 	{
-		RemoveEntitiesIfNull();
-
 		foreach (GameObject entity in _entities)
 		{
 			if (entity.GetComponent<IKeystoneEntity>().Key == key)
@@ -62,8 +69,6 @@ public class GameManager : MonoBehaviour
 
 	public GameObject GetEntity(KeyCode key, string tag)
 	{
-		RemoveEntitiesIfNull();
-
 		foreach (GameObject entity in _entities)
 		{
 			if (entity.GetComponent<IKeystoneEntity>().Key == key && entity.tag == tag)
@@ -75,8 +80,6 @@ public class GameManager : MonoBehaviour
 
 	public GameObject[] GetEntities(string tag)
 	{
-		RemoveEntitiesIfNull();
-
 		List<GameObject> entities = new List<GameObject>();
 
 		foreach (GameObject entity in _entities)
@@ -90,8 +93,6 @@ public class GameManager : MonoBehaviour
 
 	public GameObject[] GetEntities(KeyCode key)
 	{
-		RemoveEntitiesIfNull();
-
 		List<GameObject> entities = new List<GameObject>();
 
 		foreach (GameObject entity in _entities)
@@ -269,11 +270,6 @@ public class GameManager : MonoBehaviour
 				EventManager.Trigger(keystonePressedEvent);
 			}
 		}
-	}
-
-	private void RemoveEntitiesIfNull()
-	{
-		_entities.RemoveAll(item => item == null);
 	}
 
 	private Graph<Keystone> GetKeyboardLayout()

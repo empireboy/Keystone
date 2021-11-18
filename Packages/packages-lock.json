@@ -7,6 +7,13 @@
       "dependencies": {},
       "hash": "50180d33b7a324016292c8bfed4a4b71d74c1376"
     },
+    "com.cm.events.unity": {
+      "version": "https://github.com/empireboy/com.cm.events.unity.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "dee1f486c0e667f1e50ff498aca4000bf9bf4c57"
+    },
     "com.unity.collab-proxy": {
       "version": "1.9.0",
       "depth": 0,

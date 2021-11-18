@@ -402,6 +402,7 @@ GameObject:
   - component: {fileID: 4815438365543528311}
   - component: {fileID: 4815438365543528308}
   - component: {fileID: 4815438365543528305}
+  - component: {fileID: 4833194252844694023}
   - component: {fileID: 3136924853205777817}
   m_Layer: 0
   m_Name: EnemyMovingToPlayer
@@ -490,7 +491,19 @@ MonoBehaviour:
         m_CallState: 2
   KillEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4833194252844694023}
+        m_TargetAssemblyTypeName: EntityDestroyer, Assembly-CSharp
+        m_MethodName: DestroySelf
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &4815438365543528305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -504,6 +517,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 7507310185996949714, guid: 2c27f3acc2e7caf4a9ac4a199b0740c5, type: 3}
+--- !u!114 &4833194252844694023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4815438365543528309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70f30a806663fd547996e7d71d7be6df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3136924853205777817
 MonoBehaviour:
   m_ObjectHideFlags: 0

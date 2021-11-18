@@ -685,6 +685,7 @@ GameObject:
   - component: {fileID: 319806784}
   - component: {fileID: 319806785}
   - component: {fileID: 319806786}
+  - component: {fileID: 319806787}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -749,7 +750,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86b75e948a65e934ba5cd7585caa0f4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyOnDeath: 1
+  destroyOnDeath: 0
   _health: 3
   _maxHealth: 3
   HealthChangedEvent:
@@ -772,7 +773,19 @@ MonoBehaviour:
         m_CallState: 2
   KillEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 319806787}
+        m_TargetAssemblyTypeName: EntityDestroyer, Assembly-CSharp
+        m_MethodName: DestroySelf
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &319806786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -786,6 +799,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 7507310185996949714, guid: 2c27f3acc2e7caf4a9ac4a199b0740c5, type: 3}
+--- !u!114 &319806787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 319806781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70f30a806663fd547996e7d71d7be6df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &337607679
 GameObject:
   m_ObjectHideFlags: 0
@@ -2200,6 +2225,7 @@ GameObject:
   - component: {fileID: 1143848240}
   - component: {fileID: 1143848243}
   - component: {fileID: 1143848242}
+  - component: {fileID: 1143848245}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2357,6 +2383,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoNextTurnTime: 1.5
+--- !u!114 &1143848245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143848235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70f30a806663fd547996e7d71d7be6df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1180736730
 PrefabInstance:
   m_ObjectHideFlags: 0

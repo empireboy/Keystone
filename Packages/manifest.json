@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "com.cm.events": "https://github.com/empireboy/com.cm.events.git",
+    "com.cm.events.unity": "https://github.com/empireboy/com.cm.events.unity.git",
     "com.unity.collab-proxy": "1.9.0",
     "com.unity.connect.share": "1.0.9-preview",
     "com.unity.ide.rider": "3.0.7",
