@@ -154,16 +154,70 @@ public class GameManager : MonoBehaviour
 		for (int i = 0; i < keystonePositionsSO.positions.Length; i++)
 		{
 			Node<Keystone> targetNode = node;
+			Node<Keystone> nodeToCheck = null;
 
 			int positionX = (int)keystonePositionsSO.positions[i].x;
 			int positionY = (int)keystonePositionsSO.positions[i].y;
 
-			// Check for left or right node
-			Direction direction = (positionX < 0) ? Direction.Left : Direction.Right;
-
-			for (int indexX = 0; indexX < Mathf.Abs(positionX); indexX++)
+			// Make sure to add the starting node if X and Y are zero
+			if (positionX == 0 && positionY == 0)
 			{
-				targetNode = GetNeighbourNode(targetNode, direction);
+				keystones.Add(targetNode.Data);
+				continue;
+			}
+
+			// Check for left or right node
+			Direction horizontalDirection = (positionX < 0) ? Direction.Left : Direction.Right;
+
+			// Check for up or down node
+			Direction verticalDirection = (positionY < 0) ? Direction.Up : Direction.Down;
+
+			positionX = Mathf.Abs(positionX);
+			positionY = Mathf.Abs(positionY);
+
+			do
+			{
+				if (positionX > 0)
+				{
+					nodeToCheck = GetNeighbourNode(targetNode, horizontalDirection);
+
+					if (nodeToCheck != null)
+					{
+						targetNode = nodeToCheck;
+						positionX--;
+					}
+				}
+
+				if (positionY > 0 && nodeToCheck == null)
+				{
+					nodeToCheck = GetNeighbourNode(targetNode, verticalDirection);
+
+					if (nodeToCheck != null)
+					{
+						targetNode = nodeToCheck;
+						positionY--;
+					}
+					else
+					{
+						// Exit loop if the X or Y couldn't find a new node
+						positionX = 0;
+						positionY = 0;
+					}
+				}
+				else if (nodeToCheck == null)
+				{
+					// Exit loop if the X or Y couldn't find a new node
+					positionX = 0;
+					positionY = 0;
+				}
+
+				nodeToCheck = null;
+			}
+			while (positionX > 0 || positionY > 0);
+
+			/*for (int indexX = 0; indexX < Mathf.Abs(positionX); indexX++)
+			{
+				targetNode = GetNeighbourNode(targetNode, horizontalDirection);
 
 				if (targetNode == null)
 					break;
@@ -171,22 +225,21 @@ public class GameManager : MonoBehaviour
 
 			if (targetNode == null)
 				continue;
-
-			// Check for up or down node
-			direction = (positionY < 0) ? Direction.Up : Direction.Down;
 
 			for (int indexY = 0; indexY < Mathf.Abs(positionY); indexY++)
 			{
-				targetNode = GetNeighbourNode(targetNode, direction);
+				targetNode = GetNeighbourNode(targetNode, verticalDirection);
 
 				if (targetNode == null)
 					break;
 			}
 
 			if (targetNode == null)
-				continue;
+				continue;*/
 
-			keystones.Add(targetNode.Data);
+			// Make sure that the target node is not the starting node
+			if (targetNode != node)
+				keystones.Add(targetNode.Data);
 		}
 
 		return keystones.ToArray();
