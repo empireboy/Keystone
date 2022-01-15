@@ -200,6 +200,8 @@ public class GameManager : MonoBehaviour
 					else
 					{
 						// Exit loop if the X or Y couldn't find a new node
+						targetNode = null;
+
 						positionX = 0;
 						positionY = 0;
 					}
@@ -207,6 +209,8 @@ public class GameManager : MonoBehaviour
 				else if (nodeToCheck == null)
 				{
 					// Exit loop if the X or Y couldn't find a new node
+					targetNode = null;
+
 					positionX = 0;
 					positionY = 0;
 				}
@@ -238,7 +242,7 @@ public class GameManager : MonoBehaviour
 				continue;*/
 
 			// Make sure that the target node is not the starting node
-			if (targetNode != node)
+			if (targetNode != node && targetNode != null)
 				keystones.Add(targetNode.Data);
 		}
 
