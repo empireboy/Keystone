@@ -6,6 +6,6 @@ public class ItemEntity : MovingEntity
 	{
 		inventory.Add(new TestItem());
 
-		Destroy(gameObject, destroyDelay);
+		gameManager.RemoveEntity(gameObject, destroyDelay);
 	}
 }

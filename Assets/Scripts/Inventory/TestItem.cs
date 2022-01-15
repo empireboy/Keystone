@@ -1,16 +1,10 @@
 using UnityEngine;
 
-public interface IKeystoneItem
-{
-	string Name { get; }
-	string Description { get; }
-	void Use();
-}
-
 public class TestItem : IKeystoneItem
 {
 	public string Name => "Test";
 	public string Description => "This is an item used for testing purposes.";
+	public bool AutoUse => true;
 
 	public void Use()
 	{

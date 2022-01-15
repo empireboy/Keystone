@@ -45,6 +45,15 @@ public class GameManager : MonoBehaviour
 		Destroy(entity);
 	}
 
+	public void RemoveEntity(GameObject entity, float time)
+	{
+		_entities.Remove(entity);
+
+		OnEntityRemoved?.Invoke(entity);
+
+		Destroy(entity, time);
+	}
+
 	public GameObject GetEntity(string tag)
 	{
 		foreach (GameObject entity in _entities)

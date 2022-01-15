@@ -1,14 +1,40 @@
-public class KeystoneInventory : Inventory<IKeystoneItem>
-{
-	public override void Add(IKeystoneItem item)
-	{
-		item.Use();
+using UnityEngine;
 
-		items.Add(item);
+public class KeystoneInventory : MonoBehaviour, IInventory<IKeystoneItem>
+{
+	public int slotCount;
+
+	public event ItemEvent<IKeystoneItem> OnItemAdded
+	{
+		add => _inventory.OnItemAdded += value;
+		remove => _inventory.OnItemAdded -= value;
 	}
 
-	public override void Remove(IKeystoneItem item)
+	public event ItemEvent<IKeystoneItem> OnItemRemoved
 	{
-		items.Remove(item);
+		add => _inventory.OnItemRemoved += value;
+		remove => _inventory.OnItemRemoved -= value;
+	}
+
+	private PresetInventory<IKeystoneItem> _inventory;
+
+	public bool Add(IKeystoneItem item)
+	{
+		bool itemAdded = _inventory.Add(item);
+
+		if (itemAdded && item.AutoUse)
+			item.Use();
+
+		return itemAdded;
+	}
+
+	public void Remove(IKeystoneItem item)
+	{
+		_inventory.Remove(item);
+	}
+
+	private void Awake()
+	{
+		_inventory = new PresetInventory<IKeystoneItem>(slotCount);
 	}
 }

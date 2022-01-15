@@ -16,7 +16,8 @@ public class MovingEntity : MonoBehaviour, IKeystoneEntity
 	[SerializeField]
 	private KeyCode _key;
 
-	private GameManager _gameManager;
+	protected GameManager gameManager;
+
 	private Keystone _keystone;
 
 	private State _state;
@@ -38,12 +39,12 @@ public class MovingEntity : MonoBehaviour, IKeystoneEntity
 
 	private void Awake()
 	{
-		_gameManager = FindObjectOfType<GameManager>();
+		gameManager = FindObjectOfType<GameManager>();
 	}
 
 	private void Start()
 	{
-		_keystone = _gameManager.GetKeystone(_key);
+		_keystone = gameManager.GetKeystone(_key);
 	}
 
 	private void Update()
