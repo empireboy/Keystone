@@ -66,7 +66,7 @@ MonoBehaviour:
   m_UseMipMap: 0
   m_VSyncEnabled: 0
   m_Gizmos: 0
-  m_Stats: 1
+  m_Stats: 0
   m_SelectedSizes: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
   m_ZoomArea:
     m_HRangeLocked: 0
@@ -85,7 +85,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 0
+    m_EnableMouseInput: 1
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -190,7 +190,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 168
+  controlID: 225
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -250,7 +250,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 3a5b3afff69fddff1aaaf3ff5cf4fffff8faffffe44d0000
+      m_ExpandedIDs: e8faffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -293,8 +293,8 @@ MonoBehaviour:
     y: 0
     width: 1080
     height: 518
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 9}
   m_Panes:
   - {fileID: 9}
@@ -578,7 +578,7 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: 0.29811582, y: -0.05921678, z: 0.018583482, w: 0.9525875}
     speed: 2
-    m_Value: {x: 0.2980938, y: -0.0592124, z: 0.01858211, w: 0.9525171}
+    m_Value: {x: -0.29811582, y: 0.05921678, z: -0.018583482, w: -0.9525875}
   m_Size:
     m_Target: 3.7402225
     speed: 2
@@ -715,7 +715,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: ConsoleWindow
+  m_Name: ProjectBrowser
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -724,15 +724,15 @@ MonoBehaviour:
     y: 0
     width: 584
     height: 469
-  m_MinSize: {x: 101, y: 121}
-  m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 15}
+  m_MinSize: {x: 231, y: 271}
+  m_MaxSize: {x: 10001, y: 10021}
+  m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
   - {fileID: 15}
   - {fileID: 16}
-  m_Selected: 1
-  m_LastSelected: 0
+  m_Selected: 0
+  m_LastSelected: 1
 --- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -774,22 +774,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts
+    - Assets/Scripts/Inventory
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Scripts
+  - Assets/Scripts/Inventory
   m_LastFoldersGridSize: 16
-  m_LastProjectPath: D:\Development\Unity\Projects\Automated Testing
+  m_LastProjectPath: D:\Development\Unity\Projects\Keystone
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: c6530000
-    m_LastClickedID: 21446
-    m_ExpandedIDs: 00000000164f0000184f00001a4f00001c4f00001e4f0000204f0000224f000000ca9a3bffffff7f
+    m_SelectedIDs: d04f0000
+    m_LastClickedID: 20432
+    m_ExpandedIDs: 00000000864f0000884f00008a4f00008c4f00008e4f0000904f0000924f0000ac4f000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -817,7 +817,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000164f0000184f00001a4f00001c4f00001e4f0000204f0000224f000000ca9a3bffffff7f
+    m_ExpandedIDs: 00000000864f0000884f00008a4f00008c4f00008e4f0000904f0000924f000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -842,8 +842,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: a0f99aff
-    m_LastClickedInstanceID: -6620768
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c62300000c4e0000fe4e00005e4f0000ae50000000000000
     m_RenameOverlay:
@@ -893,10 +893,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 0
+    x: 8
     y: 591
-    width: 583
-    height: 448
+    width: 578
+    height: 440
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -921,21 +921,21 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 0
-    y: 595
-    width: 553
-    height: 444
+    x: 8
+    y: 591
+    width: 578
+    height: 440
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
     m_SaveData: []
   m_Spl:
-    ID: 867
+    ID: 10226
     splitterInitialOffset: 0
     currentActiveSplitter: -1
     realSizes:
-    - 280
-    - 94
+    - 277
+    - 93
     relativeSizes:
     - 0.75
     - 0.25
@@ -945,7 +945,7 @@ MonoBehaviour:
     maxSizes:
     - 0
     - 0
-    lastTotalSize: 374
+    lastTotalSize: 370
     splitSize: 6
     xOffset: 0
     m_Version: 1
@@ -1010,11 +1010,11 @@ MonoBehaviour:
     m_Window: {fileID: 16}
     m_NewResultList:
     - id: 1000
-      uniqueId: '[Automated Testing][suite]'
-      name: Automated Testing
-      fullName: Automated Testing
-      resultStatus: 1
-      duration: 0.1102422
+      uniqueId: '[Keystone][suite]'
+      name: Keystone
+      fullName: Keystone
+      resultStatus: 0
+      duration: 0
       messages: 
       output: 
       stacktrace: 
@@ -1025,60 +1025,6 @@ MonoBehaviour:
       categories: []
       parentId: 
       parentUniqueId: 
-    - id: 1003
-      uniqueId: '[Assembly-CSharp-Editor][D:/Development/Unity/Projects/Automated
-        Testing/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll][suite]'
-      name: Assembly-CSharp-Editor.dll
-      fullName: D:/Development/Unity/Projects/Automated Testing/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
-      resultStatus: 1
-      duration: 0.0620951
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-      categories: []
-      parentId: 1000
-      parentUniqueId: '[Automated Testing][suite]'
-    - id: 1001
-      uniqueId: Assembly-CSharp-Editor.dll/[Assembly-CSharp-Editor][Test][suite]
-      name: Test
-      fullName: Test
-      resultStatus: 1
-      duration: 0.0597739
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-      categories: []
-      parentId: 1003
-      parentUniqueId: '[Assembly-CSharp-Editor][D:/Development/Unity/Projects/Automated
-        Testing/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll][suite]'
-    - id: 1002
-      uniqueId: Assembly-CSharp-Editor.dll/Test/[Assembly-CSharp-Editor][Test.SomeTest]
-      name: SomeTest
-      fullName: Test.SomeTest
-      resultStatus: 1
-      duration: 0.0107484
-      messages: 
-      output: 
-      stacktrace: 'at Test.SomeTest () [0x00000] in D:\Development\Unity\Projects\Automated
-        Testing\Assets\Scripts\Editor\Test.cs:8
-
-'
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1001
-      parentUniqueId: Assembly-CSharp-Editor.dll/[Assembly-CSharp-Editor][Test][suite]
     m_ResultText: 'SomeTest (0,011s)
 
       ---
@@ -1093,7 +1039,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 2e9ce259
       m_LastClickedID: 1508023342
-      m_ExpandedIDs: d76902904c7ab4bc153be230ffffff7f
+      m_ExpandedIDs: d76902904c7ab4bc153be23010572c39ffffff7f
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1147,7 +1093,7 @@ MonoBehaviour:
   - {fileID: 19}
   - {fileID: 20}
   m_Selected: 0
-  m_LastSelected: 2
+  m_LastSelected: 1
 --- !u!114 &18
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1179,28 +1125,28 @@ MonoBehaviour:
   m_Recording: 1
   m_ActiveNativePlatformSupportModuleName: 
   m_AllModules:
-  - rid: 1951971025095753728
-  - rid: 1951971025095753729
-  - rid: 1951971025095753730
-  - rid: 1951971025095753731
-  - rid: 1951971025095753732
-  - rid: 1951971025095753733
-  - rid: 1951971025095753734
-  - rid: 1951971025095753735
-  - rid: 1951971025095753736
-  - rid: 1951971025095753737
-  - rid: 1951971025095753738
-  - rid: 1951971025095753739
-  - rid: 1951971025095753740
-  - rid: 1951971025095753741
-  - rid: 1951971025095753742
-  - rid: 1951971025095753743
+  - rid: 1951971063066525696
+  - rid: 1951971063066525697
+  - rid: 1951971063066525698
+  - rid: 1951971063066525699
+  - rid: 1951971063066525700
+  - rid: 1951971063066525701
+  - rid: 1951971063066525702
+  - rid: 1951971063066525703
+  - rid: 1951971063066525704
+  - rid: 1951971063066525705
+  - rid: 1951971063066525706
+  - rid: 1951971063066525707
+  - rid: 1951971063066525708
+  - rid: 1951971063066525709
+  - rid: 1951971063066525710
+  - rid: 1951971063066525711
   m_CallstackRecordMode: 1
   m_ClearOnPlay: 0
   references:
     version: 2
     RefIds:
-    - rid: 1951971025095753728
+    - rid: 1951971063066525696
       type: {class: CPUProfilerModule, ns: UnityEditorInternal.Profiling, asm: UnityEditor.CoreModule}
       data:
         m_Identifier: UnityEditorInternal.Profiling.CPUProfilerModule, UnityEditor.CoreModule,
@@ -1666,7 +1612,7 @@ MonoBehaviour:
           <threadId>k__BackingField: 23672
           <threadIndex>k__BackingField: 0
           m_GroupName: 
-    - rid: 1951971025095753729
+    - rid: 1951971063066525697
       type: {class: GPUProfilerModule, ns: UnityEditorInternal.Profiling, asm: UnityEditor.CoreModule}
       data:
         m_Identifier: UnityEditorInternal.Profiling.GPUProfilerModule, UnityEditor.CoreModule,
@@ -2004,13 +1950,13 @@ MonoBehaviour:
           <threadId>k__BackingField: 0
           <threadIndex>k__BackingField: -1
           m_GroupName: 
-    - rid: 1951971025095753730
+    - rid: 1951971063066525698
       type: {class: RenderingProfilerModule, ns: UnityEditorInternal.Profiling, asm: UnityEditor.CoreModule}
       data:
         m_Identifier: UnityEditorInternal.Profiling.RenderingProfilerModule, UnityEditor.CoreModule,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         m_PaneScroll: {x: 0, y: 0}
-    - rid: 1951971025095753731
+    - rid: 1951971063066525699
       type: {class: MemoryProfilerModule, ns: UnityEditorInternal.Profiling, asm: UnityEditor.CoreModule}
       data:
         m_Identifier: UnityEditorInternal.Profiling.MemoryProfilerModule, UnityEditor.CoreModule,
@@ -2040,7 +1986,7 @@ MonoBehaviour:
           oldMinSizes: 
           oldMaxSizes: 
           oldSplitSize: 0
-    - rid: 1951971025095753732
+    - rid: 1951971063066525700
       type: {class: AudioProfilerModule, ns: UnityEditorInternal.Profiling, asm: UnityEditor.CoreModule}
       data:
         m_Identifier: UnityEditorInternal.Profiling.AudioProfilerModule, UnityEditor.CoreModule,
@@ -2049,31 +1995,31 @@ MonoBehaviour:
         m_ShowInactiveDSPChains: 0
         m_HighlightAudibleDSPChains: 1
         m_DSPGraphZoomFactor: 1
-    - rid: 1951971025095753733
+    - rid: 1951971063066525701
       type: {class: VideoProfilerModule, ns: UnityEditorInternal.Profiling, asm: UnityEditor.CoreModule}
       data:
         m_Identifier: UnityEditorInternal.Profiling.VideoProfilerModule, UnityEditor.CoreModule,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         m_PaneScroll: {x: 0, y: 0}
-    - rid: 1951971025095753734
+    - rid: 1951971063066525702
       type: {class: PhysicsProfilerModule, ns: UnityEditorInternal.Profiling, asm: UnityEditor.CoreModule}
       data:
         m_Identifier: UnityEditorInternal.Profiling.PhysicsProfilerModule, UnityEditor.CoreModule,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         m_PaneScroll: {x: 0, y: 0}
-    - rid: 1951971025095753735
+    - rid: 1951971063066525703
       type: {class: Physics2DProfilerModule, ns: UnityEditorInternal.Profiling, asm: UnityEditor.CoreModule}
       data:
         m_Identifier: UnityEditorInternal.Profiling.Physics2DProfilerModule, UnityEditor.CoreModule,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         m_PaneScroll: {x: 0, y: 0}
-    - rid: 1951971025095753736
+    - rid: 1951971063066525704
       type: {class: NetworkingMessagesProfilerModule, ns: UnityEditorInternal.Profiling, asm: UnityEditor.CoreModule}
       data:
         m_Identifier: UnityEditorInternal.Profiling.NetworkingMessagesProfilerModule,
           UnityEditor.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         m_PaneScroll: {x: 0, y: 0}
-    - rid: 1951971025095753737
+    - rid: 1951971063066525705
       type: {class: NetworkingOperationsProfilerModule, ns: UnityEditorInternal.Profiling, asm: UnityEditor.CoreModule}
       data:
         m_Identifier: UnityEditorInternal.Profiling.NetworkingOperationsProfilerModule,
@@ -2120,45 +2066,45 @@ MonoBehaviour:
         - ObjectHide
         - CRC
         - ClientAuthority
-    - rid: 1951971025095753738
+    - rid: 1951971063066525706
       type: {class: UIProfilerModule, ns: UnityEditorInternal.Profiling, asm: UnityEditor.CoreModule}
       data:
         m_Identifier: UnityEditorInternal.Profiling.UIProfilerModule, UnityEditor.CoreModule,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         m_PaneScroll: {x: 0, y: 0}
-    - rid: 1951971025095753739
+    - rid: 1951971063066525707
       type: {class: UIDetailsProfilerModule, ns: UnityEditorInternal.Profiling, asm: UnityEditor.CoreModule}
       data:
         m_Identifier: UnityEditorInternal.Profiling.UIDetailsProfilerModule, UnityEditor.CoreModule,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         m_PaneScroll: {x: 0, y: 0}
-    - rid: 1951971025095753740
+    - rid: 1951971063066525708
       type: {class: GlobalIlluminationProfilerModule, ns: UnityEditorInternal.Profiling, asm: UnityEditor.CoreModule}
       data:
         m_Identifier: UnityEditorInternal.Profiling.GlobalIlluminationProfilerModule,
           UnityEditor.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         m_PaneScroll: {x: 0, y: 0}
-    - rid: 1951971025095753741
+    - rid: 1951971063066525709
       type: {class: VirtualTexturingProfilerModule, ns: UnityEditorInternal.Profiling, asm: UnityEditor.CoreModule}
       data:
         m_Identifier: UnityEditorInternal.Profiling.VirtualTexturingProfilerModule,
           UnityEditor.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         m_PaneScroll: {x: 0, y: 0}
         m_VTProfilerView:
-          rid: 1951971025095753744
-    - rid: 1951971025095753742
+          rid: 1951971063066525712
+    - rid: 1951971063066525710
       type: {class: FileIOProfilerModule, ns: UnityEditorInternal.Profiling, asm: UnityEditor.CoreModule}
       data:
         m_Identifier: UnityEditorInternal.Profiling.FileIOProfilerModule, UnityEditor.CoreModule,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         m_PaneScroll: {x: 0, y: 0}
-    - rid: 1951971025095753743
+    - rid: 1951971063066525711
       type: {class: AssetLoadingProfilerModule, ns: UnityEditorInternal.Profiling, asm: UnityEditor.CoreModule}
       data:
         m_Identifier: UnityEditorInternal.Profiling.AssetLoadingProfilerModule, UnityEditor.CoreModule,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         m_PaneScroll: {x: 0, y: 0}
-    - rid: 1951971025095753744
+    - rid: 1951971063066525712
       type: {class: VirtualTexturingProfilerView, ns: UnityEditor, asm: UnityEditor.CoreModule}
       data:
         m_SortAscending: 0
@@ -2193,7 +2139,7 @@ MonoBehaviour:
     m_SaveData: []
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 20006
+  m_LastSelectedObjectID: 23344
 --- !u!114 &20
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -2264,8 +2210,8 @@ MonoBehaviour:
     y: 0
     width: 492
     height: 987
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 22}
   m_Panes:
   - {fileID: 22}

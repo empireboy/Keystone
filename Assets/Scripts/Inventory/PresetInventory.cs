@@ -1,4 +1,4 @@
-public class PresetInventory<T> : IInventory<T>
+public class PresetInventory<T> : IInventory<T> where T : class
 {
 	public event ItemEvent<T> OnItemAdded;
 	public event ItemEvent<T> OnItemRemoved;
@@ -8,20 +8,27 @@ public class PresetInventory<T> : IInventory<T>
 	public PresetInventory(int size)
 	{
 		itemSlots = new ItemSlot<T>[size];
+
+		// Initialize item slots
+		for (int i = 0; i < itemSlots.Length; i++)
+			itemSlots[i] = new ItemSlot<T>();
 	}
 
-	public virtual bool Add(T item)
+	public virtual bool Add(T item, int[] groupIndexes = null)
 	{
-		for (int i = 0; i < itemSlots.Length - 1; i++)
+		for (int i = 0; i < itemSlots.Length; i++)
 		{
-			if (itemSlots[i] == null)
-				itemSlots[i] = new ItemSlot<T>();
+			bool isItemAllowed = IsItemAllowedInGroup(i, groupIndexes);
 
-			if (itemSlots[i].GetType().GetGenericArguments()[0].Equals(typeof(T)))
+			if (IsItemAllowedInGroup(i, groupIndexes))
 			{
-				itemSlots[i].Items.Push(item);
+				T removedItem = null;
+				itemSlots[i].Add(item, out removedItem);
 
 				OnItemAdded?.Invoke(i);
+
+				if (removedItem != null)
+					OnItemRemoved?.Invoke(i);
 
 				return true;
 			}
@@ -33,5 +40,61 @@ public class PresetInventory<T> : IInventory<T>
 	public virtual void Remove(T item)
 	{
 
+	}
+
+	public void SetMaxStackSize(int slotIndex, int maxStackSize)
+    {
+		itemSlots[slotIndex].MaxStackSize = maxStackSize;
+    }
+
+	public void SetItemIndexesAllowed(int slotIndex, int[] itemIndexes = null)
+    {
+		itemSlots[slotIndex].ItemIndexesAllowed = itemIndexes;
+    }
+
+	public void SetSwapIfFull(int slotIndex, bool swapIfFull)
+    {
+		itemSlots[slotIndex].SwapIfFull = swapIfFull;
+    }
+
+	public int GetMaxStackSize(int slotIndex)
+    {
+		return itemSlots[slotIndex].MaxStackSize;
+    }
+
+	public int[] GetItemIndexesAllowed(int slotIndex)
+	{
+		return itemSlots[slotIndex].ItemIndexesAllowed;
+	}
+
+	public bool GetSwapIfNull(int slotIndex)
+	{
+		return itemSlots[slotIndex].SwapIfFull;
+	}
+
+	private bool IsItemAllowedInGroup(int slotIndex, int[] groupIndexes = null)
+    {
+		bool isItemAllowed = false;
+
+		// Always allow item if the group is null
+		if (groupIndexes == null)
+			return true;
+
+		foreach (int groupIndex in groupIndexes)
+        {
+			foreach (int slotGroupIndex in itemSlots[slotIndex].ItemIndexesAllowed)
+            {
+				if (groupIndex == slotGroupIndex)
+                {
+					isItemAllowed = true;
+					break;
+                }
+            }
+
+			if (isItemAllowed)
+				break;
+        }
+
+		return isItemAllowed;
 	}
 }

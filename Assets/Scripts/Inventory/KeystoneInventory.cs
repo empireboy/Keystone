@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class KeystoneInventory : MonoBehaviour, IInventory<IKeystoneItem>
+public class KeystoneInventory : MonoBehaviour
 {
 	public int slotCount;
 
@@ -20,7 +20,7 @@ public class KeystoneInventory : MonoBehaviour, IInventory<IKeystoneItem>
 
 	public bool Add(IKeystoneItem item)
 	{
-		bool itemAdded = _inventory.Add(item);
+		bool itemAdded = _inventory.Add(item, item.GroupIndexes);
 
 		if (itemAdded && item.AutoUse)
 			item.Use();
@@ -36,5 +36,8 @@ public class KeystoneInventory : MonoBehaviour, IInventory<IKeystoneItem>
 	private void Awake()
 	{
 		_inventory = new PresetInventory<IKeystoneItem>(slotCount);
+
+		_inventory.SetItemIndexesAllowed(0, new int[] { 0 });
+		_inventory.SetSwapIfFull(0, true);
 	}
 }
