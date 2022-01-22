@@ -47,7 +47,9 @@ public class PlayerInput : MonoBehaviour
 			case "Item":
 
 				_player.MoveToKeystone(_gameManager.GetKeystone(keystonePressedEvent.Key));
-				entity.GetComponent<ItemEntity>().Collect(_inventory);
+
+				ItemEntity itemEntity = entity.GetComponent<ItemEntity>();
+				new ItemCollector().Collect(_gameManager, _inventory, itemEntity, keystonePressedEvent.Key);
 
 				break;
 		}

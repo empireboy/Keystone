@@ -14,15 +14,16 @@ public class PresetInventory<T> : IInventory<T> where T : class
 			itemSlots[i] = new ItemSlot<T>();
 	}
 
-	public virtual bool Add(T item, int[] groupIndexes = null)
+	public virtual bool Add(T item, out T removedItem, int[] groupIndexes = null)
 	{
+		removedItem = null;
+
 		for (int i = 0; i < itemSlots.Length; i++)
 		{
 			bool isItemAllowed = IsItemAllowedInGroup(i, groupIndexes);
 
 			if (IsItemAllowedInGroup(i, groupIndexes))
 			{
-				T removedItem = null;
 				itemSlots[i].Add(item, out removedItem);
 
 				OnItemAdded?.Invoke(i);

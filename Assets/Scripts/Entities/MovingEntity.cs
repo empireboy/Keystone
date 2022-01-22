@@ -37,6 +37,15 @@ public class MovingEntity : MonoBehaviour, IKeystoneEntity
 		_state = State.Moving;
 	}
 
+	public void TeleportToKeystone(Keystone keystone)
+    {
+		_keystone = keystone;
+
+		_key = keystone.Key;
+
+		transform.position = _keystone.Position;
+	}
+
 	private void Awake()
 	{
 		gameManager = FindObjectOfType<GameManager>();

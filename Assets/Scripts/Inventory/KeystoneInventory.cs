@@ -18,9 +18,9 @@ public class KeystoneInventory : MonoBehaviour
 
 	private PresetInventory<IKeystoneItem> _inventory;
 
-	public bool Add(IKeystoneItem item)
+	public bool Add(IKeystoneItem item, out IKeystoneItem removedItem)
 	{
-		bool itemAdded = _inventory.Add(item, item.GroupIndexes);
+		bool itemAdded = _inventory.Add(item, out removedItem, item.GroupIndexes);
 
 		if (itemAdded && item.AutoUse)
 			item.Use();
