@@ -8,13 +8,16 @@ public class KeystoneText : MonoBehaviour
 	private bool _startEmpty = true;
 
 	[SerializeField]
+	private string _overrideKey = "";
+
+	[SerializeField]
 	private Text _text;
 
 	private KeystoneObject _keystoneObject;
 
 	public void ShowKey()
 	{
-		_text.text = _keystoneObject.key.ToString();
+		_text.text = (string.IsNullOrEmpty(_overrideKey)) ? _keystoneObject.key.ToString() : _overrideKey;
 	}
 
 	public void HideKey()
@@ -25,10 +28,7 @@ public class KeystoneText : MonoBehaviour
 	private void Awake()
 	{
 		_keystoneObject = GetComponent<KeystoneObject>();
-	}
 
-	private void Start()
-	{
 		if (_startEmpty)
 			HideKey();
 		else

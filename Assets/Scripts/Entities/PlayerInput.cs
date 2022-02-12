@@ -27,6 +27,11 @@ public class PlayerInput : MonoBehaviour
 		EventManager.AddListener<KeystonePressedEvent>(OnKeystonePressed);
 	}
 
+	private void OnDestroy()
+	{
+		EventManager.RemoveListener<KeystonePressedEvent>(OnKeystonePressed);
+	}
+
 	private void KeystonePressedBehaviour(GameObject entity, KeystonePressedEvent keystonePressedEvent)
 	{
 		// Move to keystone if there is no entity on it
@@ -48,8 +53,8 @@ public class PlayerInput : MonoBehaviour
 
 				_player.MoveToKeystone(_gameManager.GetKeystone(keystonePressedEvent.Key));
 
-				ItemEntity itemEntity = entity.GetComponent<ItemEntity>();
-				new ItemCollector().Collect(_gameManager, _inventory, itemEntity, keystonePressedEvent.Key);
+				IKeystoneItem itemEntity = entity.GetComponent<ItemEntity>().itemSO;
+				new ItemCollector().Collect(_gameManager, _inventory, itemEntity, entity, keystonePressedEvent.Key);
 
 				break;
 		}

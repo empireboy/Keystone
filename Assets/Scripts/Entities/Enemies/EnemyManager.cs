@@ -19,7 +19,12 @@ public class EnemyManager : MonoBehaviour
 		EventManager.AddListener<TurnStartEvent>(OnTurnStart);
 	}
 
-	public void ExecuteEnemies()
+    private void OnDestroy()
+    {
+		EventManager.RemoveListener<TurnStartEvent>(OnTurnStart);
+    }
+
+    public void ExecuteEnemies()
 	{
 		StartCoroutine(ExecuteEnemiesRoutine());
 	}

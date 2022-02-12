@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour
 	[SerializeField]
 	private GameObject[] _itemPrefabs;
 
+	[SerializeField]
+	private GameObject[] _enemyPrefabs;
+
 	private Graph<Keystone> _keystoneGraph;
 
 	public enum Direction
@@ -119,6 +122,11 @@ public class GameManager : MonoBehaviour
 	public GameObject GetItemPrefab(ItemTypes itemType)
     {
 		return _itemPrefabs[(int)itemType];
+	}
+
+	public GameObject GetEnemyPrefab(EnemyTypes enemyType)
+	{
+		return _enemyPrefabs[(int)enemyType];
 	}
 
 	public Keystone GetNeighbourKeystone(KeyCode key, Direction direction)
@@ -350,9 +358,23 @@ public class GameManager : MonoBehaviour
 	{
 		Dictionary<KeyCode, Node<Keystone>> nodeGraph = new Dictionary<KeyCode, Node<Keystone>>();
 		Graph<Keystone> keystoneGraph = new Graph<Keystone>();
+
+		// Add every letter as Keystone
 		KeyCode keyCode = KeyCode.A;
 		
 		for (int i = 0; i < 26; i++)
+		{
+			Keystone keystone = new Keystone(keyCode);
+
+			nodeGraph.Add(keyCode, keystoneGraph.Add(keystone));
+
+			keyCode++;
+		}
+
+		// Add every alpha number as Keystone
+		keyCode = KeyCode.Alpha0;
+
+		for (int i = 0; i < 10; i++)
 		{
 			Keystone keystone = new Keystone(keyCode);
 

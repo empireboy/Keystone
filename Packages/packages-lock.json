@@ -5,7 +5,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "50180d33b7a324016292c8bfed4a4b71d74c1376"
+      "hash": "daad460af7eabbec0f5678e0a8f62e4c864141ab"
     },
     "com.cm.events.unity": {
       "version": "https://github.com/empireboy/com.cm.events.unity.git",
@@ -13,6 +13,12 @@
       "source": "git",
       "dependencies": {},
       "hash": "dee1f486c0e667f1e50ff498aca4000bf9bf4c57"
+    },
+    "com.unity.2d.sprite": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {}
     },
     "com.unity.collab-proxy": {
       "version": "1.15.4",
@@ -58,7 +64,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.ide.visualstudio": {
-      "version": "2.0.12",
+      "version": "2.0.14",
       "depth": 0,
       "source": "registry",
       "dependencies": {

@@ -1,8 +1,11 @@
+using System.Collections;
 using UnityEngine;
 
 public class KeystoneInventory : MonoBehaviour
 {
 	public int slotCount;
+
+	public ShoeItemSO defaultBoots;
 
 	public event ItemEvent<IKeystoneItem> OnItemAdded
 	{
@@ -39,5 +42,17 @@ public class KeystoneInventory : MonoBehaviour
 
 		_inventory.SetItemIndexesAllowed(0, new int[] { 0 });
 		_inventory.SetSwapIfFull(0, true);
+	}
+
+    private void Start()
+    {
+		StartCoroutine(AddFirstItemsRoutine());
+    }
+
+    private IEnumerator AddFirstItemsRoutine()
+    {
+		yield return new WaitForEndOfFrame();
+
+		_inventory.Add(defaultBoots, out IKeystoneItem removedItem, defaultBoots.GroupIndexes);
 	}
 }

@@ -1,1 +1,1 @@
-public delegate void ItemEvent<T>(int slotIndex);
+public delegate void ItemEvent<T>(T item, int slotIndex);

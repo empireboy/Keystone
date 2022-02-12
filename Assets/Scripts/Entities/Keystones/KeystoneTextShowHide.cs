@@ -15,7 +15,13 @@ public class KeystoneTextShowHide : MonoBehaviour
 		EventManager.AddListener<TurnEndEvent>(OnTurnEnd);
 	}
 
-	private void OnTurnStart(object eventData)
+    private void OnDestroy()
+    {
+		EventManager.RemoveListener<TurnStartEvent>(OnTurnStart);
+		EventManager.RemoveListener<TurnEndEvent>(OnTurnEnd);
+    }
+
+    private void OnTurnStart(object eventData)
 	{
 		TurnStartEvent turnStartEvent = eventData as TurnStartEvent;
 
@@ -60,6 +66,9 @@ public class KeystoneTextShowHide : MonoBehaviour
 
 		foreach (KeystoneObject keystoneObject in _keystoneManager.keystoneObjects)
 		{
+			if ((int)keystoneObject.key >= (int)KeyCode.Alpha0 && (int)keystoneObject.key <= (int)KeyCode.Alpha9)
+				continue;
+
 			keystoneObject.GetComponent<KeystoneText>().HideKey();
 		}
 	}

@@ -26,10 +26,10 @@ public class PresetInventory<T> : IInventory<T> where T : class
 			{
 				itemSlots[i].Add(item, out removedItem);
 
-				OnItemAdded?.Invoke(i);
+				OnItemAdded?.Invoke(item, i);
 
 				if (removedItem != null)
-					OnItemRemoved?.Invoke(i);
+					OnItemRemoved?.Invoke(removedItem, i);
 
 				return true;
 			}

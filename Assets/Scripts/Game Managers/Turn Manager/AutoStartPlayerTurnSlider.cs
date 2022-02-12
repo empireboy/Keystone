@@ -28,7 +28,12 @@ public class AutoStartPlayerTurnSlider : MonoBehaviour
 		_slider.value = Mathf.Lerp(0, 1, _currentAutomationTime / _automationTime);
 	}
 
-	private void OnStartAutomation(float time)
+    private void OnDestroy()
+    {
+		EventManager.RemoveListener<TurnEndEvent>(OnTurnEnd);
+	}
+
+    private void OnStartAutomation(float time)
 	{
 		_automationTime = time;
 		_slider.value = 1;

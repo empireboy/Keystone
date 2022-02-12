@@ -2,11 +2,13 @@ using UnityEngine;
 
 public class ItemCollector
 {
-    public void Collect(GameManager gameManager, KeystoneInventory inventory, ItemEntity item, KeyCode key)
+    public static readonly float destroyDelay = 0.1f;
+
+    public void Collect(GameManager gameManager, KeystoneInventory inventory, IKeystoneItem item, GameObject itemObject, KeyCode key)
     {
         IKeystoneItem removedItem;
 
-        inventory.Add(item.itemSO, out removedItem);
+        inventory.Add(item, out removedItem);
 
         if (removedItem != null)
         {
@@ -18,6 +20,6 @@ public class ItemCollector
             gameManager.AddEntity(movingEntity.gameObject);
         }
 
-        gameManager.RemoveEntity(item.gameObject, item.destroyDelay);
+        gameManager.RemoveEntity(itemObject, destroyDelay);
     }
 }

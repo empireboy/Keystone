@@ -1,6 +1,7 @@
 using CM.Events;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class DefaultHealth : MonoBehaviour, IDamageable
 {
@@ -55,6 +56,9 @@ public class DefaultHealth : MonoBehaviour, IDamageable
 
 	public void Kill()
 	{
+		if (CompareTag("Player"))
+			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
 		KillEvent.Invoke();
 
 		if (destroyOnDeath)

@@ -7,6 +7,7 @@ public abstract class ItemSO : ScriptableObject, IKeystoneItem
     public string Description => _description;
     public bool AutoUse => _autoUse;
     public int[] GroupIndexes => _groupIndexes;
+    public Sprite Sprite => _sprite;
 
     [SerializeField]
     private ItemTypes _type;
@@ -22,6 +23,9 @@ public abstract class ItemSO : ScriptableObject, IKeystoneItem
 
     [SerializeField]
     private int[] _groupIndexes;
+
+    [SerializeField]
+    private Sprite _sprite;
 
     public abstract void Use();
 }

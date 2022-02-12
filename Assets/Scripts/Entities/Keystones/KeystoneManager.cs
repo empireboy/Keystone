@@ -32,7 +32,13 @@ public class KeystoneManager : MonoBehaviour
 		//StartCoroutine(WaveStartRoutine(KeyCode.A));
 	}
 
-	private IEnumerator WaveStartRoutine(KeyCode key)
+    private void OnDestroy()
+    {
+        EventManager.RemoveListener<KeystonePressedEvent>(OnKeystonePressed);
+		EventManager.RemoveListener<KeystoneReleasedEvent>(OnKeystoneReleased);
+	}
+
+    private IEnumerator WaveStartRoutine(KeyCode key)
 	{
 		yield return new WaitForSeconds(0.5f);
 

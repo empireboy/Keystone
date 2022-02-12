@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe46519119b96e647b783b541045a959, type: 3}
+  m_Name: DefaultShoeItem
+  m_EditorClassIdentifier: 
+  _type: 0
+  _name: 
+  _description: 
+  _autoUse: 1
+  _groupIndexes: 00000000
+  _sprite: {fileID: 21300000, guid: b6111fb1cba307a448a8f70de6fdad27, type: 3}
+  keystonePositionsSO: {fileID: 11400000, guid: 05ff09da005f9d54e881b6320d254dd3, type: 2}

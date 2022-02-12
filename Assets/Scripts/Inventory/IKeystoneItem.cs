@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public interface IKeystoneItem
 {
 	ItemTypes Type { get; }
@@ -5,5 +7,6 @@ public interface IKeystoneItem
 	string Description { get; }
 	bool AutoUse { get; }
 	int[] GroupIndexes { get; }
+	Sprite Sprite { get; }
 	void Use();
 }

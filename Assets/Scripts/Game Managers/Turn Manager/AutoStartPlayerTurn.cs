@@ -20,7 +20,13 @@ public class AutoStartPlayerTurn : MonoBehaviour
 		EventManager.AddListener<TurnEndEvent>(OnTurnEnd);
 	}
 
-	private void OnTurnStart(object eventData)
+    private void OnDestroy()
+    {
+		EventManager.RemoveListener<TurnStartEvent>(OnTurnStart);
+		EventManager.RemoveListener<TurnEndEvent>(OnTurnEnd);
+    }
+
+    private void OnTurnStart(object eventData)
 	{
 		if (_firstTurn)
 		{
