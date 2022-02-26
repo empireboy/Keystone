@@ -1,5 +1,25 @@
 {
   "dependencies": {
+    "com.cm.collections": {
+      "version": "https://github.com/empireboy/com.cm.collections.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.cm.objectcreation": "https://github.com/empireboy/com.cm.objectcreation.git"
+      },
+      "hash": "3064e92d65f327715c4c4535f036083c6e3f5cce"
+    },
+    "com.cm.collections.unity": {
+      "version": "https://github.com/empireboy/cm.collections.unity.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.cm.objectcreation": "https://github.com/empireboy/com.cm.objectcreation.git",
+        "com.cm.objectcreation.unity": "https://github.com/empireboy/com.cm.objectcreation.unity.git",
+        "com.cm.collections": "https://github.com/empireboy/com.cm.collections.git"
+      },
+      "hash": "f4356cc4a85cfc10f98e25e584fd8294c9f0d411"
+    },
     "com.cm.events": {
       "version": "https://github.com/empireboy/com.cm.events.git",
       "depth": 0,
@@ -14,6 +34,29 @@
       "dependencies": {},
       "hash": "dee1f486c0e667f1e50ff498aca4000bf9bf4c57"
     },
+    "com.cm.managers.unity": {
+      "version": "https://github.com/empireboy/com.cm.managers.unity.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "3911ac0627fa5129f7771183395b71114afbe839"
+    },
+    "com.cm.objectcreation": {
+      "version": "https://github.com/empireboy/com.cm.objectcreation.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "fb67c4fb13b790a0879ada9964d06c1d13fb44f4"
+    },
+    "com.cm.objectcreation.unity": {
+      "version": "https://github.com/empireboy/com.cm.objectcreation.unity.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.cm.objectcreation": "https://github.com/empireboy/com.cm.objectcreation.git"
+      },
+      "hash": "0611ff86a1644ce768909041cd0db5b17e04d7a3"
+    },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 0,
@@ -21,17 +64,16 @@
       "dependencies": {}
     },
     "com.unity.collab-proxy": {
-      "version": "1.15.4",
+      "version": "1.15.12",
       "depth": 0,
       "source": "registry",
       "dependencies": {
-        "com.unity.nuget.newtonsoft-json": "2.0.0",
         "com.unity.services.core": "1.0.1"
       },
       "url": "https://packages.unity.com"
     },
     "com.unity.connect.share": {
-      "version": "4.2.2",
+      "version": "4.2.3",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -55,7 +97,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.ide.rider": {
-      "version": "3.0.7",
+      "version": "3.0.12",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -79,15 +121,8 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
-    "com.unity.nuget.newtonsoft-json": {
-      "version": "2.0.0",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.com"
-    },
     "com.unity.postprocessing": {
-      "version": "3.1.1",
+      "version": "3.2.0",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -132,7 +167,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.timeline": {
-      "version": "1.6.2",
+      "version": "1.6.3",
       "depth": 0,
       "source": "registry",
       "dependencies": {

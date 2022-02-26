@@ -1940,6 +1940,8 @@ GameObject:
   - component: {fileID: 1143848244}
   - component: {fileID: 1143848245}
   - component: {fileID: 1143848246}
+  - component: {fileID: 1143848247}
+  - component: {fileID: 1143848248}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1961,15 +1963,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _entities:
   - {fileID: 319806781}
-  _itemPrefabs:
-  - {fileID: 6141138090825186957, guid: 9ecc35d7eca305c4db422ec6fd8a7f73, type: 3}
-  - {fileID: 5922616672093026627, guid: 2b92fe5f8b3bd2f469f88d7f09db1274, type: 3}
-  - {fileID: 3731983221603793236, guid: c5c5506c82c028344920932ef7c5d66d, type: 3}
-  _enemyPrefabs:
-  - {fileID: 4393968292953918657, guid: a3ff664bfac26514fbc65617a0106e17, type: 3}
-  - {fileID: 6738311982697153321, guid: b11ab8c6ec4f1e54688bbbf541710aed, type: 3}
-  - {fileID: 4229101614746955870, guid: 24a9692eddee8444aa64fdd25fa264f1, type: 3}
-  - {fileID: 8699105252514742433, guid: 5adba76e67f71e345abb30cb95406662, type: 3}
 --- !u!4 &1143848237
 Transform:
   m_ObjectHideFlags: 0
@@ -2130,6 +2123,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dcb4f64a8ca184fbedf4f46707138f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1143848247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143848235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa8a0b3cdb170ac44874e6f4ab8e7f79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _assetContainerSO: {fileID: 11400000, guid: f3e119a0fdfa7704ab7ecedcc0414536, type: 2}
+--- !u!114 &1143848248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143848235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fa74b31bd3c0c744b97dce9e7285588, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _preloadAmount: 0
+  _maxObjects: 0
+  _defaultObject: {fileID: 0}
 --- !u!1001 &1180736730
 PrefabInstance:
   m_ObjectHideFlags: 0

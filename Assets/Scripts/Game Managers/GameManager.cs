@@ -10,12 +10,6 @@ public class GameManager : MonoBehaviour
 	[SerializeField]
 	private List<GameObject> _entities = new List<GameObject>();
 
-	[SerializeField]
-	private GameObject[] _itemPrefabs;
-
-	[SerializeField]
-	private GameObject[] _enemyPrefabs;
-
 	private Graph<Keystone> _keystoneGraph;
 
 	public enum Direction
@@ -117,16 +111,6 @@ public class GameManager : MonoBehaviour
 		}
 
 		return entities.ToArray();
-	}
-
-	public GameObject GetItemPrefab(ItemTypes itemType)
-    {
-		return _itemPrefabs[(int)itemType];
-	}
-
-	public GameObject GetEnemyPrefab(EnemyTypes enemyType)
-	{
-		return _enemyPrefabs[(int)enemyType];
 	}
 
 	public Keystone GetNeighbourKeystone(KeyCode key, Direction direction)

@@ -1,3 +1,4 @@
+using CM.Managers;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -108,7 +109,7 @@ public class WaveManager : MonoBehaviour
 
     private void CreateEnemy(EnemyTypes enemyType)
     {
-        MovingEntity movingEntity = Instantiate(_gameManager.GetEnemyPrefab(enemyType))
+        MovingEntity movingEntity = Instantiate(AssetManager.Instance.GetAsset<GameObject>(enemyType.ToString()))
                 .GetComponent<MovingEntity>();
 
         KeyCode key;
@@ -128,7 +129,7 @@ public class WaveManager : MonoBehaviour
 
     private void CreateItem(ItemTypes itemType)
     {
-        MovingEntity movingEntity = Instantiate(_gameManager.GetItemPrefab(itemType))
+        MovingEntity movingEntity = Instantiate(AssetManager.Instance.GetAsset<GameObject>(itemType.ToString()))
                 .GetComponent<MovingEntity>();
 
         KeyCode key;
