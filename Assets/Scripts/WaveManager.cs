@@ -109,8 +109,12 @@ public class WaveManager : MonoBehaviour
 
     private void CreateEnemy(EnemyTypes enemyType)
     {
-        MovingEntity movingEntity = Instantiate(AssetManager.Instance.GetAsset<GameObject>(enemyType.ToString()))
-                .GetComponent<MovingEntity>();
+        /*MovingEntity movingEntity = Instantiate(AssetManager.Instance.GetAsset<GameObject>(enemyType.ToString()))
+                .GetComponent<MovingEntity>();*/
+
+        MovingEntity movingEntity = new EnemyFactory(FindObjectOfType<ObjectPoolManager>())
+            .Create(enemyType)
+            .GetComponent<MovingEntity>();
 
         KeyCode key;
 

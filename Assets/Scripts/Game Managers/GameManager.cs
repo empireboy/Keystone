@@ -1,3 +1,4 @@
+using CM.Collections;
 using CM.Events;
 using System;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
 	public event GameObjectEvent OnEntityRemoved;
+	public GameObjectPool gameObjectPool;
 
 	[SerializeField]
 	private List<GameObject> _entities = new List<GameObject>();
