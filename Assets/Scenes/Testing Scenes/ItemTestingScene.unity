@@ -566,6 +566,9 @@ GameObject:
   - component: {fileID: 291699209}
   - component: {fileID: 291699208}
   - component: {fileID: 291699207}
+  - component: {fileID: 291699211}
+  - component: {fileID: 291699213}
+  - component: {fileID: 291699212}
   m_Layer: 0
   m_Name: ObjectPools
   m_TagString: Untagged
@@ -665,6 +668,54 @@ MonoBehaviour:
   - {fileID: 291699209}
   - {fileID: 291699208}
   - {fileID: 291699207}
+  - {fileID: 291699211}
+  - {fileID: 291699213}
+  - {fileID: 291699212}
+--- !u!114 &291699211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291699204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fa74b31bd3c0c744b97dce9e7285588, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _preloadAmount: 3
+  _maxObjects: 5
+  _defaultObject: {fileID: 5922616672093026627, guid: 2b92fe5f8b3bd2f469f88d7f09db1274, type: 3}
+--- !u!114 &291699212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291699204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fa74b31bd3c0c744b97dce9e7285588, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _preloadAmount: 3
+  _maxObjects: 5
+  _defaultObject: {fileID: 6141138090825186957, guid: 9ecc35d7eca305c4db422ec6fd8a7f73, type: 3}
+--- !u!114 &291699213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291699204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fa74b31bd3c0c744b97dce9e7285588, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _preloadAmount: 3
+  _maxObjects: 5
+  _defaultObject: {fileID: 3731983221603793236, guid: c5c5506c82c028344920932ef7c5d66d, type: 3}
 --- !u!114 &293457689 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8964483585230165086, guid: 9322b20d4348f6742964740d67775c6e, type: 3}

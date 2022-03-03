@@ -1,4 +1,3 @@
-using CM.Managers;
 using UnityEngine;
 
 public class ItemCollector
@@ -13,7 +12,8 @@ public class ItemCollector
 
         if (removedItem != null)
         {
-            MovingEntity movingEntity = Object.Instantiate(AssetManager.Instance.GetAsset<GameObject>(removedItem.ToString()))
+            MovingEntity movingEntity = new EntityFactory(Object.FindObjectOfType<ObjectPoolManager>())
+                .Create(removedItem.Type)
                 .GetComponent<MovingEntity>();
 
             movingEntity.TeleportToKeystone(gameManager.GetKeystone(key));

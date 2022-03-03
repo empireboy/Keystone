@@ -58,7 +58,7 @@ public class WaveManager : MonoBehaviour
             case 4:
 
                 CreateEnemy(EnemyTypes.Slime);
-                CreateItem(ItemTypes.TestItem2);
+                CreateItem(ItemTypes.ItemTest2);
 
                 break;
 
@@ -80,7 +80,7 @@ public class WaveManager : MonoBehaviour
                 CreateEnemy(EnemyTypes.SlimeSmall);
                 CreateEnemy(EnemyTypes.SlimeSmall);
                 CreateEnemy(EnemyTypes.SlimeSmall);
-                CreateItem(ItemTypes.TestItem3);
+                CreateItem(ItemTypes.ItemTest3);
 
                 break;
 
@@ -109,10 +109,7 @@ public class WaveManager : MonoBehaviour
 
     private void CreateEnemy(EnemyTypes enemyType)
     {
-        /*MovingEntity movingEntity = Instantiate(AssetManager.Instance.GetAsset<GameObject>(enemyType.ToString()))
-                .GetComponent<MovingEntity>();*/
-
-        MovingEntity movingEntity = new EnemyFactory(FindObjectOfType<ObjectPoolManager>())
+        MovingEntity movingEntity = new EntityFactory(FindObjectOfType<ObjectPoolManager>())
             .Create(enemyType)
             .GetComponent<MovingEntity>();
 
@@ -133,8 +130,9 @@ public class WaveManager : MonoBehaviour
 
     private void CreateItem(ItemTypes itemType)
     {
-        MovingEntity movingEntity = Instantiate(AssetManager.Instance.GetAsset<GameObject>(itemType.ToString()))
-                .GetComponent<MovingEntity>();
+        MovingEntity movingEntity = new EntityFactory(FindObjectOfType<ObjectPoolManager>())
+            .Create(itemType)
+            .GetComponent<MovingEntity>();
 
         KeyCode key;
 
